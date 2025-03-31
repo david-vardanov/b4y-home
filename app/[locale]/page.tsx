@@ -184,7 +184,7 @@ export default async function Home({
             <Card className="p-6" itemScope itemType="https://schema.org/Game" itemProp="itemListElement">
               <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/game-placeholder.svg"
+                  src="https://images.unsplash.com/photo-1622012986653-da862f8e2666?q=80&w=2940"
                   alt="Aviator Game"
                   fill
                   className="object-cover"
@@ -196,14 +196,14 @@ export default async function Home({
                 {t('games.aviator.description')}
               </p>
               <Button variant="outline" asChild className="w-full">
-                <Link href="/slots/aviator">{t('games.playNow')}</Link>
+                <Link href="/slots/aviator">{t('games.aviator.playNow')}</Link>
               </Button>
             </Card>
 
             <Card className="p-6">
               <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/game-placeholder.svg"
+                  src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=2940"
                   alt="Lucky Jet"
                   fill
                   className="object-cover"
@@ -214,14 +214,14 @@ export default async function Home({
                 {t('games.luckyJet.description')}
               </p>
               <Button variant="outline" asChild className="w-full">
-                <Link href="/lucky-jet">{t('games.playNow')}</Link>
+                <Link href="/lucky-jet">{t('games.luckyJet.playNow')}</Link>
               </Button>
             </Card>
 
             <Card className="p-6">
               <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/cricket-placeholder.svg"
+                  src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?q=80&w=2940"
                   alt="Cricket Betting"
                   fill
                   className="object-cover"
@@ -232,10 +232,28 @@ export default async function Home({
                 {t('games.cricket.description')}
               </p>
               <Button variant="outline" asChild className="w-full">
-                <Link href="/cricket-betting/live">{t('games.playNow')}</Link>
+                <Link href="/cricket-betting/live">{t('games.cricket.playNow')}</Link>
               </Button>
             </Card>
           </div>
+          
+          <Card className="p-6 mt-8">
+            <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1622012986653-da862f8e2666?q=80&w=2940"
+                alt="Teen Patti"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">{t('games.teenPatti.title')}</h3>
+            <p className="text-muted-foreground mb-4">
+              {t('games.teenPatti.description')}
+            </p>
+            <Button variant="outline" asChild className="w-full">
+              <Link href="/games/teen-patti">{t('games.teenPatti.playNow')}</Link>
+            </Button>
+          </Card>
         </div>
       </section>
 

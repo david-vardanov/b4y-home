@@ -1,92 +1,81 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { LanguageSwitcher } from '@/components/ui/language-switcher';
-
-const navigationItems = {
-  main: [
-    { href: '/', label: 'Home' },
-    { href: '/cricket-betting/live', label: 'Cricket Betting' },
-    { href: '/slots/aviator', label: 'Aviator' },
-    { href: '/lucky-jet', label: 'Lucky Jet' },
-  ],
-  secondary: [
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/payment', label: 'Payments' },
-    { href: '/promo-code', label: 'Promo Codes' },
-  ],
-};
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const closeMenu = () => setIsOpen(false);
+
+  const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'Cricket Betting', href: '/cricket-betting/live' },
+    { name: 'Teen Patti', href: '/games/teen-patti' },
+    { name: 'Lucky Jet', href: '/lucky-jet' },
+    { name: 'Aviator', href: '/slots/aviator' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-      <div className="container flex items-center justify-between h-24">
-        <Link href="/" className="font-bold text-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <nav className="container h-16 flex items-center justify-between">
+        <Link href="/" className="font-bold text-2xl">
           Bet4yaar
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex items-center gap-4">
-            {navigationItems.main.map((item) => (
-              <li key={item.href}>
-                <Button variant="ghost" asChild>
-                  <Link href={item.href}>{item.label}</Link>
-                </Button>
-              </li>
-            ))}
-            <li>
-              <Button asChild>
+        <div className="hidden md:flex items-center gap-6">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Button asChild>
+            <Link href="/registration">Join Now</Link>
+          </Button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon">
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <nav className="flex flex-col gap-4">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-lg font-medium transition-colors hover:text-primary ${
+                    pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                  }`}
+                  onClick={closeMenu}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Button asChild className="mt-4" onClick={closeMenu}>
                 <Link href="/registration">Join Now</Link>
               </Button>
-            </li>
-            <li>
-              <LanguageSwitcher />
-            </li>
-          </ul>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <Menu className="h-6 w-6" />
-        </Button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav className="md:hidden border-t">
-          <div className="container py-4">
-            <ul className="space-y-2">
-              {[...navigationItems.main, ...navigationItems.secondary].map((item) => (
-                <li key={item.href}>
-                  <Button variant="ghost" className="w-full justify-start" asChild>
-                    <Link href={item.href}>{item.label}</Link>
-                  </Button>
-                </li>
-              ))}
-              <li>
-                <Button className="w-full" asChild>
-                  <Link href="/registration">Join Now</Link>
-                </Button>
-              </li>
-              <li className="flex justify-center">
-                <LanguageSwitcher />
-              </li>
-            </ul>
-          </div>
-        </nav>
-      )}
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </nav>
     </header>
   );
 }

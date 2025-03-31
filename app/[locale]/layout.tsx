@@ -1,11 +1,11 @@
 import { Inter } from 'next/font/google';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { createTranslator } from 'next-intl';
 import { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
 import { Header } from '@/components/ui/header';
 import { Footer } from '@/components/ui/footer';
 import { Toaster } from '@/components/ui/toaster';
-import { toast } from '@/components/ui/use-toast';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -68,7 +68,6 @@ export default async function RootLayout({
   try {
     messages = await getMessages(locale);
   } catch (error) {
-    console.error('Critical error loading messages:', error);
     return notFound();
   }
   
@@ -86,6 +85,7 @@ export default async function RootLayout({
         <meta property="og:site_name" content="Bet4yaar" />
       </head>
       <body className={inter.className} itemScope itemType="https://schema.org/WebPage">
+        <NextIntlClientProvider locale={actualLocale} messages={messages}>
         <Header />
         <div itemScope itemType="https://schema.org/Organization">
           <meta itemProp="name" content="Bet4yaar" />
@@ -98,6 +98,7 @@ export default async function RootLayout({
         </main>
         <Footer />
         <Toaster />
+        </NextIntlClientProvider>
         <script type="application/ld+json" dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",

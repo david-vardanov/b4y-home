@@ -31,17 +31,24 @@
       "title": "Popular Games",
       "aviator": {
         "title": "Aviator",
-        "description": "Experience the thrill of our most popular crash game"
+        "description": "Experience the thrill of our most popular crash game",
+        "playNow": "Play Now"
       },
       "luckyJet": {
         "title": "Lucky Jet",
-        "description": "Take off with multipliers in this exciting game"
+        "description": "Take off with multipliers in this exciting game",
+        "playNow": "Play Now"
       },
       "cricket": {
         "title": "Cricket Betting",
-        "description": "Live cricket betting with real-time odds"
+        "description": "Live cricket betting with real-time odds",
+        "playNow": "Bet Now"
       },
-      "playNow": "Play Now"
+      "teenPatti": {
+        "title": "Teen Patti",
+        "description": "Experience the thrill of India's favorite card game",
+        "playNow": "Play Now"
+      }
     },
     "features": {
       "support": {

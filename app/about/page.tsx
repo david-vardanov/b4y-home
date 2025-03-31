@@ -1,17 +1,33 @@
 import { Card } from '@/components/ui/card';
 import { Shield, Trophy, Users } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Bet4yaar - Leading Indian Online Casino & Sports Betting Platform',
   description: 'Learn about Bet4yaar, India\'s trusted online casino and sports betting platform. Licensed, secure, and committed to responsible gaming.',
   keywords: 'bet4yaar about, indian casino company, online betting platform, responsible gaming india',
+  authors: [{ name: 'Bet4yaar Team' }],
+  category: 'Online Betting',
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: 'About Bet4yaar - Leading Indian Online Casino & Sports Betting Platform',
     description: 'Learn about Bet4yaar, India\'s trusted online casino and sports betting platform. Licensed, secure, and committed to responsible gaming.',
     type: 'website',
     url: 'https://bet4yaar.com/about',
+    locale: 'en_IN',
+    siteName: 'Bet4yaar',
     images: [
       {
         url: 'https://bet4yaar.com/images/about-og.jpg',
@@ -20,6 +36,14 @@ export const metadata: Metadata = {
         alt: 'About Bet4yaar'
       }
     ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Bet4yaar - Leading Indian Online Casino & Sports Betting Platform',
+    description: 'Learn about Bet4yaar, India\'s trusted online casino and sports betting platform. Licensed, secure, and committed to responsible gaming.',
+    images: ['https://bet4yaar.com/images/about-og.jpg'],
+    creator: '@bet4yaar',
+    site: '@bet4yaar',
   },
   alternates: {
     canonical: 'https://bet4yaar.com/about',
@@ -35,15 +59,30 @@ export default function AboutPage() {
     <main className="min-h-screen py-20" itemScope itemType="https://schema.org/AboutPage">
       <div className="container">
         <div className="max-w-4xl mx-auto">
+          <nav className="mb-4" itemScope itemType="https://schema.org/BreadcrumbList">
+            <ol className="flex items-center space-x-2 text-sm">
+              <li itemScope itemProp="itemListElement" itemType="https://schema.org/ListItem">
+                <Link href="/" className="text-muted-foreground hover:text-primary">Home</Link>
+                <meta itemProp="position" content="1" />
+              </li>
+              <li className="text-muted-foreground">/</li>
+              <li itemScope itemProp="itemListElement" itemType="https://schema.org/ListItem">
+                <span className="text-foreground">About</span>
+                <meta itemProp="position" content="2" />
+              </li>
+            </ol>
+          </nav>
+
           <h1 className="text-4xl font-bold mb-6" itemProp="headline">About Bet4yaar</h1>
 
           <div className="relative h-[400px] mb-12 rounded-lg overflow-hidden">
             <Image
-              src="/images/hero-bg.svg"
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2940"
               alt="Bet4yaar Office"
               fill
               className="object-cover"
               itemProp="image"
+              priority
             />
           </div>
 
@@ -65,6 +104,11 @@ export default function AboutPage() {
             <meta itemProp="foundingDate" content="2023" />
             <meta itemProp="name" content="Bet4yaar" />
             <meta itemProp="url" content="https://bet4yaar.com" />
+            <meta itemProp="sameAs" content="https://facebook.com/bet4yaar" />
+            <meta itemProp="sameAs" content="https://twitter.com/bet4yaar" />
+            <meta itemProp="sameAs" content="https://instagram.com/bet4yaar" />
+            <meta itemProp="email" content="support@bet4yaar.com" />
+            <meta itemProp="telephone" content="+91-XXXXXXXXXX" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -133,13 +177,32 @@ export default function AboutPage() {
               "@type": "Organization",
               "name": "Bet4yaar",
               "url": "https://bet4yaar.com",
+              "logo": "https://bet4yaar.com/logo.png",
               "foundingDate": "2023",
               "description": "India's premier online gaming platform offering sports betting and casino games",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mumbai",
+                "addressRegion": "Maharashtra",
+                "addressCountry": "India"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-XXXXXXXXXX",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Hindi"]
+              },
               "numberOfEmployees": {
                 "@type": "QuantitativeValue",
                 "value": "100+"
               },
               "award": "Excellence in Online Gaming",
+              "sameAs": [
+                "https://facebook.com/bet4yaar",
+                "https://twitter.com/bet4yaar",
+                "https://instagram.com/bet4yaar"
+              ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Gaming Services",
@@ -162,6 +225,24 @@ export default function AboutPage() {
                   }
                 ]
               }
+            })
+          }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://bet4yaar.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://bet4yaar.com/about"
+              }]
             })
           }} />
         </div>

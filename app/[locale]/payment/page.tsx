@@ -3,33 +3,39 @@ import { Card } from '@/components/ui/card';
 import { IndianRupee, Shield, Zap } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { createTranslator } from 'next-intl';
 
-export const metadata: Metadata = {
-  title: 'Secure Payments - Bet4yaar | UPI, Net Banking & More',
-  description: 'Make secure deposits and withdrawals at Bet4yaar using UPI, Net Banking, and more. Instant processing, 24/7 support, and zero fees.',
-  keywords: 'bet4yaar payments, upi betting, net banking casino, online betting payment, secure gambling payments india',
-  openGraph: {
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const t = await createTranslator({ locale, messages });
+
+  return {
     title: 'Secure Payments - Bet4yaar | UPI, Net Banking & More',
     description: 'Make secure deposits and withdrawals at Bet4yaar using UPI, Net Banking, and more. Instant processing, 24/7 support, and zero fees.',
-    type: 'website',
-    url: 'https://bet4yaar.com/payment',
-    images: [
-      {
-        url: 'https://bet4yaar.com/images/payment-og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Secure Payments at Bet4yaar'
+    keywords: 'bet4yaar payments, upi betting, net banking casino, online betting payment, secure gambling payments india',
+    openGraph: {
+      title: 'Secure Payments - Bet4yaar | UPI, Net Banking & More',
+      description: 'Make secure deposits and withdrawals at Bet4yaar using UPI, Net Banking, and more. Instant processing, 24/7 support, and zero fees.',
+      type: 'website',
+      url: 'https://bet4yaar.com/payment',
+      images: [
+        {
+          url: 'https://bet4yaar.com/images/payment-og.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Secure Payments at Bet4yaar'
+        }
+      ]
+    },
+    alternates: {
+      canonical: 'https://bet4yaar.com/payment',
+      languages: {
+        'en-IN': '/en/payment',
+        'hi-IN': '/hi/payment'
       }
-    ]
-  },
-  alternates: {
-    canonical: 'https://bet4yaar.com/payment',
-    languages: {
-      'en-IN': '/en/payment',
-      'hi-IN': '/hi/payment'
-    }
-  },
-};
+    },
+  };
+}
 
 export default function PaymentPage() {
   return (
@@ -44,7 +50,7 @@ export default function PaymentPage() {
               <div className="space-y-6">
                 <div className="flex items-center p-4 bg-muted rounded-lg" itemScope itemType="https://schema.org/PaymentMethod">
                   <Image
-                    src="https://images.unsplash.com/photo-1622012986653-da862f8e2666?q=80&w=2940"
+                    src="/images/payment/upi.svg"
                     alt="UPI Payment"
                     width={60}
                     height={60}
@@ -58,7 +64,7 @@ export default function PaymentPage() {
 
                 <div className="flex items-center p-4 bg-muted rounded-lg" itemScope itemType="https://schema.org/PaymentMethod">
                   <Image
-                    src="https://images.unsplash.com/photo-1622012986653-da862f8e2666?q=80&w=2940"
+                    src="/images/payment/netbanking.svg"
                     alt="Net Banking"
                     width={60}
                     height={60}
@@ -81,7 +87,7 @@ export default function PaymentPage() {
               <div className="space-y-6">
                 <div className="flex items-center p-4 bg-muted rounded-lg">
                   <Image
-                    src="https://images.unsplash.com/photo-1622012986653-da862f8e2666?q=80&w=2940"
+                    src="/images/payment/bank.svg"
                     alt="Bank Transfer"
                     width={60}
                     height={60}
@@ -95,7 +101,7 @@ export default function PaymentPage() {
 
                 <div className="flex items-center p-4 bg-muted rounded-lg">
                   <Image
-                    src="https://images.unsplash.com/photo-1622012986653-da862f8e2666?q=80&w=2940"
+                    src="/images/payment/upi.svg"
                     alt="UPI Withdrawal"
                     width={60}
                     height={60}
@@ -141,87 +147,67 @@ export default function PaymentPage() {
           </div>
 
           <div className="prose max-w-none" itemScope itemType="https://schema.org/FAQPage">
-            <h2 itemProp="name">Payment FAQ</h2>
-            <h3>What is the minimum deposit?</h3>
-            <p>The minimum deposit amount is ₹100.</p>
+            <h2>Payment FAQ</h2>
+            
+            <div itemScope itemType="https://schema.org/Question">
+              <h3 itemProp="name">What is the minimum deposit?</h3>
+              <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                <p itemProp="text">The minimum deposit amount is ₹100.</p>
+              </div>
+            </div>
 
-            <h3>How long do withdrawals take?</h3>
-            <p>
-              UPI withdrawals are processed instantly. Bank transfers may take up
-              to 24 hours depending on your bank.
-            </p>
+            <div itemScope itemType="https://schema.org/Question">
+              <h3 itemProp="name">How long do withdrawals take?</h3>
+              <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                <p itemProp="text">
+                  UPI withdrawals are processed instantly. Bank transfers may take up
+                  to 24 hours depending on your bank.
+                </p>
+              </div>
+            </div>
 
-            <h3>Are there any fees?</h3>
-            <p>
-              No, Bet4yaar does not charge any fees for deposits or withdrawals.
-              However, your bank might have their own charges.
-            </p>
+            <div itemScope itemType="https://schema.org/Question">
+              <h3 itemProp="name">Are there any fees?</h3>
+              <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                <p itemProp="text">
+                  No, Bet4yaar does not charge any fees for deposits or withdrawals.
+                  However, your bank might have their own charges.
+                </p>
+              </div>
+            </div>
+          </div>
 
-            <script type="application/ld+json" dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": [
+          <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Payment Methods",
+              "description": "Make secure deposits and withdrawals at Bet4yaar using UPI, Net Banking, and more. Instant processing, 24/7 support, and zero fees.",
+              "url": "https://bet4yaar.com/payment",
+              "provider": {
+                "@type": "Organization",
+                "name": "Bet4yaar",
+                "url": "https://bet4yaar.com"
+              },
+              "offers": {
+                "@type": "AggregateOffer",
+                "offerCount": "4",
+                "priceCurrency": "INR",
+                "acceptedPaymentMethod": [
                   {
-                    "@type": "Question",
-                    "name": "What is the minimum deposit?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "The minimum deposit amount is ₹100."
-                    }
+                    "@type": "PaymentMethod",
+                    "name": "UPI",
+                    "description": "Instant, Free"
                   },
                   {
-                    "@type": "Question",
-                    "name": "How long do withdrawals take?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "UPI withdrawals are processed instantly. Bank transfers may take up to 24 hours depending on your bank."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "Are there any fees?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "No, Bet4yaar does not charge any fees for deposits or withdrawals. However, your bank might have their own charges."
-                    }
+                    "@type": "PaymentMethod",
+                    "name": "Net Banking",
+                    "description": "All Major Banks"
                   }
                 ]
-              })
-            }} />
-
-            <script type="application/ld+json" dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebPage",
-                "name": "Payment Methods",
-                "description": "Make secure deposits and withdrawals at Bet4yaar using UPI, Net Banking, and more. Instant processing, 24/7 support, and zero fees.",
-                "url": "https://bet4yaar.com/payment",
-                "provider": {
-                  "@type": "Organization",
-                  "name": "Bet4yaar",
-                  "url": "https://bet4yaar.com"
-                },
-                "offers": {
-                  "@type": "AggregateOffer",
-                  "offerCount": "4",
-                  "priceCurrency": "INR",
-                  "acceptedPaymentMethod": [
-                    {
-                      "@type": "PaymentMethod",
-                      "name": "UPI",
-                      "description": "Instant, Free"
-                    },
-                    {
-                      "@type": "PaymentMethod",
-                      "name": "Net Banking",
-                      "description": "All Major Banks"
-                    }
-                  ]
-                }
-              })
-            }} />
-          </div>
+              }
+            })
+          }} />
         </div>
       </div>
     </main>
