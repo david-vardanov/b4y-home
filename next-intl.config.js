@@ -1,8 +1,7 @@
-// @ts-check
-
-/** @type {import('next-intl').Config} */
+// next-intl.config.js
 module.exports = {
-  locales: ['en', 'hi'],
-  defaultLocale: 'en',
-  localePrefix: 'as-needed'
+  locales: ["en", "hi"], // Add whatever languages you support
+  defaultLocale: "en",
+  // Optional: Configure pages to be statically generated
+  localeDetection: true,
 };
