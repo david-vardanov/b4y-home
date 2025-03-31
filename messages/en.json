@@ -1,0 +1,61 @@
+{
+  "home": {
+    "metadata": {
+      "title": "Bet4yaar - Premier Indian Online Casino & Sports Betting Platform",
+      "description": "Experience the thrill of online betting at Bet4yaar. Play Aviator, Lucky Jet, and more casino games. Safe, secure, and trusted Indian betting platform.",
+      "keywords": "bet4yaar, indian casino, online betting, aviator game, cricket betting, lucky jet, sports betting india, online gambling india, casino games"
+    },
+    "hero": {
+      "title": "Bet4yaar – Official Website for Online Sports Betting and Online Casino",
+      "subtitle": "Use promo code WELCOME1000 and get up to ₹1,000 welcome bonus!",
+      "joinButton": "Join Bet4yaar"
+    },
+    "cricket": {
+      "title": "Live Cricket Betting",
+      "quickLinks": "Quick Links",
+      "liveMatches": "Live Matches",
+      "upcomingMatches": "Upcoming Matches",
+      "ipl": "IPL 2025",
+      "betNow": "Bet Now"
+    },
+    "about": {
+      "title": "About Bet4yaar",
+      "description": "Founded in 2023, Bet4yaar has quickly become one of India's most trusted online gaming platforms. We offer comprehensive sports betting and casino games, with a special focus on cricket and other popular Indian sports.",
+      "stats": {
+        "users": "Active Users",
+        "support": "24/7 Support",
+        "bonus": "Welcome Bonus"
+      }
+    },
+    "games": {
+      "title": "Popular Games",
+      "aviator": {
+        "title": "Aviator",
+        "description": "Experience the thrill of our most popular crash game"
+      },
+      "luckyJet": {
+        "title": "Lucky Jet",
+        "description": "Take off with multipliers in this exciting game"
+      },
+      "cricket": {
+        "title": "Cricket Betting",
+        "description": "Live cricket betting with real-time odds"
+      },
+      "playNow": "Play Now"
+    },
+    "features": {
+      "support": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock customer support in multiple Indian languages"
+      },
+      "payments": {
+        "title": "Secure Payments",
+        "description": "Multiple secure payment options including UPI and Net Banking"
+      },
+      "licensed": {
+        "title": "Licensed & Regulated",
+        "description": "Operating under strict regulatory compliance"
+      }
+    }
+  }
+}
